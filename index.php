@@ -20,30 +20,28 @@ $results = $db->query('
 <body>
 	<h1>Gardensphere &bull; Community Garden Finder</h1>
 	
-    <ul>
+    <ul class="gardens">
 	
 	<?php foreach ($results as $gardens) : ?>
-		<li>
-			<a href="single.php?id=<?php echo $gardens['id']; ?>"><?php echo $gardens['name']; ?></a>
+		<li itemscope itemtype="http://schema.org/Place">
+			<a href="single.php?id=<?php echo $gardens['id']; ?>"itemprop="name"><?php echo $gardens['name']; ?></a>
+			<span itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
+				<meta itemprop="latitude" content="<?php echo $gardens['latitude']; ?>">
+				<meta itemprop="longitude" content="<?php echo $gardens['longitude']; ?>">
+			</span>
 		</li>
 	<?php endforeach; ?>
 	</ul>
     
-    
-        <h1>Rate Garden</h1>
-    
-    <div class='star_rater'>  
-    
-    <div id="r1" class="rate_widget">  
-        <div class="star_1 ratings_stars"></div>  
-        <div class="star_2 ratings_stars"></div>  
-        <div class="star_3 ratings_stars"></div>  
-        <div class="star_4 ratings_stars"></div>  
-        <div class="star_5 ratings_stars"></div>  
-        
-        <div class="total_votes">vote data</div>  
-    </div>  
-</div>  
+   
+	<div id="map"></div>
+	
+	<?php
+	
+	include 'includes/theme-bottom.php';
+	
+	?>
+
 	
 </body>
 </html>
