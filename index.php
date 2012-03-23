@@ -10,20 +10,23 @@ $results = $db->query('
 ');
 
 	
+include 'includes/theme-top.php';
+?>
 
-?><!DOCTYPE HTML>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Gardensphere Garden Finder</title>
-</head>
-<body>
-	<h1>Gardensphere &bull; Community Garden Finder</h1>
+
+	<h1>Gardensphere</h1>
 	
+        
+    <button id="geo">Find Me</button>
+    <form id="geo-form">
+        <label for="adr">Address</label>
+        <input id="adr">
+    </form>
+    
     <ul class="gardens">
 	
 	<?php foreach ($results as $gardens) : ?>
-		<li itemscope itemtype="http://schema.org/Place">
+		<li itemscope itemtype="http://schema.org/TouristAttraction">
 			<a href="single.php?id=<?php echo $gardens['id']; ?>"itemprop="name"><?php echo $gardens['name']; ?></a>
 			<span itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
 				<meta itemprop="latitude" content="<?php echo $gardens['latitude']; ?>">
@@ -43,8 +46,6 @@ $results = $db->query('
 	?>
 
 	
-</body>
-</html>
 
 
 
