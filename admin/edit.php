@@ -1,5 +1,8 @@
 <?php 
 
+
+include '../includes/theme-top.php';
+
 $errors = array ();
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
@@ -75,35 +78,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
 	<meta charset="utf-8">
 	<title>Edit a Garden</title>
+	<link href="../css/gardens.css" rel="stylesheet">
 </head>
 
 <body>
 
-
-
-	<form method="post" action="edit.php?id=<?php echo $id; ?>"> 
-    	<div>
-        	<label for="name">Garden Name<?php if (isset($errors['name'])) : ?> <strong>is required</strong><?php endif; ?></label>
-            <input id="name" name="name" value="<?php echo $name; ?>" required>
-        </div>
-        <div>
-        	<label for="street_address">Address<?php if (isset($errors['street_address'])) : ?> <strong>is required</strong><?php endif; ?></label>
-            <input id="street_address" name="street_address" value="<?php echo $street_address; ?>" required>
-           
-        </div>
-		 <div>
-        	<label for="longitude">Longtitude<?php if (isset($errors['longitude'])) : ?> <strong>is required</strong><?php endif; ?></label>
-            <input id="longitude" name="longitude" value="<?php echo $longitude; ?>" required>
-           
-        </div>
-		 <div>
-        	<label for="latitude">Latitude<?php if (isset($errors['latitude'])) : ?> <strong>is required</strong><?php endif; ?></label>
-            <input id="latitude" name="latitude" value="<?php echo $latitude; ?>" required>
-           
-        </div>
+	<div class="adminwrapper">
 		
-        <button type="submit">Update</button>
-    </form>
-
+		<div class="editwrap">
+		
+			<h1>Edit a Garden</h1>
+			<form method="post" action="edit.php?id=<?php echo $id; ?>"> 
+				<div>
+					<label for="name">Garden Name<?php if (isset($errors['name'])) : ?> <strong>is required</strong><?php endif; ?></label>
+					<br><input id="name" name="name" value="<?php echo $name; ?>" required>
+				</div>
+				<div>
+					<label for="street_address">Address<?php if (isset($errors['street_address'])) : ?> <strong>is required</strong><?php endif; ?></label>
+					<br><input id="street_address" name="street_address" value="<?php echo $street_address; ?>" required>
+				   
+				</div>
+				 <div>
+					<label for="longitude">Longtitude<?php if (isset($errors['longitude'])) : ?> <strong>is required</strong><?php endif; ?></label>
+					<br><input id="longitude" name="longitude" value="<?php echo $longitude; ?>" required>
+				   
+				</div>
+				 <div>
+					<label for="latitude">Latitude<?php if (isset($errors['latitude'])) : ?> <strong>is required</strong><?php endif; ?></label>
+					<br><input id="latitude" name="latitude" value="<?php echo $latitude; ?>" required>
+				   
+				</div>
+				
+				<button type="submit">Update</button>
+			</form>
+		</div>
+	</div>
+	<div class="flower"</div></div>
 </body>
 </html>
